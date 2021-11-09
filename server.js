@@ -30,6 +30,13 @@ app.post('/api/users', [
     async (req, res) => {
         const errors = validationResult(req);
 
+        var err_array = errors.array();
+
+        for (var i = 0; i < err_array.length; i++)
+        {
+            console.log(err_array[i]);
+        }
+
         if (!errors.isEmpty())
         {
             return res.status(422).json({errors: errors.array()});
